@@ -1,6 +1,7 @@
 // Fichier : app/page.tsx
 
-import { Mail, CheckSquare, ChevronDown } from 'lucide-react';
+import { CheckSquare, ChevronDown } from 'lucide-react';
+import Image from 'next/image'; // Importation du composant optimisé pour les images
 
 // Composant pour la FAQ pour éviter la répétition du code
 const FaqItem = ({ question, children }) => (
@@ -17,13 +18,10 @@ const FaqItem = ({ question, children }) => (
 export default function WaitlistPage() {
   return (
     <main className="bg-[#121212] text-white font-sans antialiased">
-{/* En-tête avec le logo */}
+      {/* En-tête avec le logo */}
       <header className="absolute top-0 left-1/2 -translate-x-1/2 py-6 flex items-center gap-4">
-        {/* Image ajoutée à gauche */}
-        <img src="/vector-4.svg" alt="Décoration" className="h-8" /> {/* J'ai mis h-6 pour qu'elle soit un peu plus petite que le logo */}
-        
-        {/* Logo existant */}
-        <img src="/logo.svg" alt="Cook'Idea Logo" className="h-6" />
+        <Image src="/vector-4.svg" alt="Décoration" width={24} height={24} className="h-6 w-auto" />
+        <Image src="/logo.svg" alt="Cook'Idea Logo" width={132} height={32} className="h-8 w-auto" />
       </header>
 
       <div className="container mx-auto px-4">
@@ -31,31 +29,32 @@ export default function WaitlistPage() {
         {/* Section Héros */}
         <section className="flex flex-col items-center text-center py-24 md:py-32 pt-40">
           <div className="relative">
-            <img src="/group-1.svg" alt="Décoration" className="absolute -top-12 -left-25 w-24 hidden md:block" />
             <h1 className="text-5xl md:text-6xl font-bold leading-tight z-10 relative">
+              <Image src="/group-1.svg" alt="Décoration" width={96} height={96} className="absolute -top-12 -left-25 w-24 hidden md:block" />
               Cuisinez mieux, ensemble
-            <img src="/group-2.svg" alt="Décoration" className="absolute -bottom-1 -right-25 w-24 hidden md:block" />
+              <Image src="/group-2.svg" alt="Décoration" width={96} height={96} className="absolute -bottom-1 -right-25 w-24 hidden md:block" />
             </h1>
           </div>
           <p className="max-w-xl mt-6 text-lg text-gray-300">
-            Une application pensée à partir des retours de milliers d’utilisateurs déçus par les applications existantes. Découvrez, partagez et planifiez vos recettes avec une communauté qui place l’entraide avant les publicités et la complexité.
+            Une application pensée à partir des retours de milliers d&apos;utilisateurs déçus par les applications existantes. Découvrez, partagez et planifiez vos recettes avec une communauté qui place l&apos;entraide avant les publicités et la complexité.
           </p>
           <form
-             action="https://formspree.io/f/mgvyjyrn" // <-- VOTRE URL FORMSPREE ICI
-             method="POST"
-             className="flex flex-col items-center gap-4 mt-8 w-full max-w-md"
-            > 
+            action="https://formspree.io/f/mgvyjyrn"
+            method="POST"
+            className="flex flex-col items-center gap-4 mt-8 w-full max-w-md"
+          >
             <p className="text-xs text-gray-500 mb-2">
               Soyez avertis lors de la sortie de Cookidea et gagnez un badge pour vous démarquer
             </p>
             <div className="flex w-full">
-              <input 
+              <input
                 type="email"
-                name="email" 
-                placeholder="votre@mail.com" 
-                className="w-full text-center px-6 py-3 rounded-l-full bg-[#1D1C22] text-white placeholder-gray-500 border border-r-0 border-[#3D3A47] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF7A86]" 
+                name="email"
+                placeholder="votre@mail.com"
+                className="w-full text-center px-6 py-3 rounded-l-full bg-[#1D1C22] text-white placeholder-gray-500 border border-r-0 border-[#3D3A47] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF7A86]"
               />
-              <button 
+              <button
+                type="submit"
                 className="flex-shrink-0 px-8 py-3 rounded-r-full bg-[#FF7A86] text-black font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300"
               >
                 Rejoindre
@@ -69,32 +68,32 @@ export default function WaitlistPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Ce que Cookidea vous offre</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
-              <img src="/image.png" alt="Icône communauté" className="h-29 w-39 mb-4" />
+              <Image src="/image.png" alt="Icône communauté" width={116} height={116} className="h-29 w-39 mb-4" />
               <h3 className="text-xl font-bold mb-2">Communauté active</h3>
-              <p className="text-gray-400">Explorez les idées de cuisine partagées par d’autres utilisateurs, échangez des astuces et publiez vos propres créations.</p>
+              <p className="text-gray-400">Explorez les idées de cuisine partagées par d&apos;autres utilisateurs, échangez des astuces et publiez vos propres créations.</p>
             </div>
             <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
-              <img src="/badges.png" alt="Icône badges" className="h-24 w-24 mb-4" />
+              <Image src="/badges.png" alt="Icône badges" width={96} height={96} className="h-24 w-24 mb-4" />
               <h3 className="text-xl font-bold mb-2">Soyez reconnu grâce à vos badges</h3>
               <p className="text-gray-400">Gagnez des badges en participant et faites savoir à tout le monde que vous êtes un vrai passionné.</p>
             </div>
             <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
-              <img src="/fridge.png" alt="Icône frigo" className="h-24 w-24 mb-4" />
+              <Image src="/fridge.png" alt="Icône frigo" width={96} height={96} className="h-24 w-24 mb-4" />
               <h3 className="text-xl font-bold mb-2">Cuisinez ce que vous avez sous la main</h3>
-              <p className="text-gray-400">Pas besoin de réfléchir. Prenez une photo de ce qu’il vous reste, et laissez Cookidea vous suggérer des idées adaptées.</p>
+              <p className="text-gray-400">Pas besoin de réfléchir. Prenez une photo de ce qu&apos;il vous reste, et laissez Cookidea vous suggérer des idées adaptées.</p>
             </div>
             <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
-              <img src="/calendar.png" alt="Icône calendrier" className="h-24 w-24 mb-4" />
+              <Image src="/calendar.png" alt="Icône calendrier" width={96} height={96} className="h-24 w-24 mb-4" />
               <h3 className="text-xl font-bold mb-2">Planifiez vos repas facilement avec le calendrier intégré</h3>
               <p className="text-gray-400">Organisez vos plats de la semaine et gagnez du temps grâce à une planification simple et intuitive.</p>
             </div>
           </div>
         </section>
 
-        {/* MODIFICATION : Alignement à gauche + ajout de vector-4.svg */}
+        {/* Section Notre fondement */}
         <section className="py-20 max-w-3xl mx-auto">
           <div className="flex items-center gap-4 mb-8">
-            <img src="/vector-4.svg" alt="Décoration" className="h-10" />
+            <Image src="/vector-4.svg" alt="Décoration" width={40} height={40} className="h-10 w-auto" />
             <h2 className="text-3xl md:text-4xl font-bold text-white">Notre fondement</h2>
           </div>
           <div className="text-gray-300 space-y-4">
@@ -103,20 +102,20 @@ export default function WaitlistPage() {
               <li>Sans publicités intrusives.</li>
               <li>Sans interfaces complexes ou inaccessibles.</li>
             </ul>
-            <p>Pour vraiment placer l'utilisateur au centre, nous nous appuyons sur les retours d'utilisateurs déçus par les grandes applications déjà bien implantées sur le marché.</p>
+            <p>Pour vraiment placer l&apos;utilisateur au centre, nous nous appuyons sur les retours d&apos;utilisateurs déçus par les grandes applications déjà bien implantées sur le marché.</p>
             <p>Nous avons écouté ce qui les frustre. Et nous avons décidé de faire les choses autrement. Notre mission : proposer une expérience claire, agréable et réellement utile.</p>
             <ul className="list-inside list-disc space-y-2 pl-4">
               <li>Des suggestions basées sur les ingrédients que vous avez déjà.</li>
               <li>Un calendrier pour planifier facilement vos repas.</li>
-              <li>Une touche de gamification pour progresser en s'amusant.</li>
+              <li>Une touche de gamification pour progresser en s&apos;amusant.</li>
             </ul>
-            <p>Et surtout, un véritable réseau social pour partager, s'inspirer, et s'amuser chaque jour autour de la cuisine. Cookidea est conçue pour s'adapter à vos usages – pas l'inverse.</p>
+            <p>Et surtout, un véritable réseau social pour partager, s&apos;inspirer, et s&apos;amuser chaque jour autour de la cuisine. Cookidea est conçue pour s&apos;adapter à vos usages – pas l&apos;inverse.</p>
           </div>
         </section>
 
-        {/* Section Soutenez le projet (inchangée, reste centrée) */}
+        {/* Section Soutenez le projet */}
         <section className="py-20 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Soutenez le projet et débloquez encore plus d’avantages</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Soutenez le projet et débloquez encore plus d&apos;avantages</h2>
           <p className="max-w-2xl mx-auto mt-4 text-gray-400">
             Vous voulez aller plus loin que la waitlist ? En participant à notre campagne Ulule, vous nous aidez à développer une application indépendante, sans pub ni compromis, et vous débloquez des avantages exclusifs réservés aux contributeurs.
           </p>
@@ -143,10 +142,10 @@ export default function WaitlistPage() {
           </button>
         </section>
 
-        {/* MODIFICATION : Alignement à gauche + ajout de vector-4.svg */}
+        {/* Section Notre promesse */}
         <section className="py-20 max-w-3xl mx-auto">
            <div className="flex items-center gap-4 mb-12">
-            <img src="/vector-4.svg" alt="Décoration" className="h-10" />
+            <Image src="/vector-4.svg" alt="Décoration" width={40} height={40} className="h-10 w-auto" />
             <h2 className="text-3xl md:text-4xl font-bold text-white">Notre promesse envers vous</h2>
           </div>
           <ul className="space-y-4">
@@ -156,7 +155,7 @@ export default function WaitlistPage() {
             <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Une vraie communauté : partagez vos trouvailles et découvrez celles des autres.</span></li>
             <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Vos objectifs avant tout : filtrez les recettes selon votre régime – grossir, perdre du poids, etc.</span></li>
             <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Motivation au quotidien : suivez vos progrès et célébrez vos bons choix grâce à nos récompenses.</span></li>
-            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Confort d'utilisation : interface claire, mode sombre pour cuisiner même tard le soir.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Confort d&apos;utilisation : interface claire, mode sombre pour cuisiner même tard le soir.</span></li>
           </ul>
         </section>
         
@@ -172,18 +171,25 @@ export default function WaitlistPage() {
                   Une manière de vous remercier pour la confiance et de vous donner une vraie place dans le lancement.
                 </p>
                 <form
-                  action="https://formspree.io/f/mgvyjyrn" // <-- VOTRE URL FORMSPREE ICI
+                  action="https://formspree.io/f/mgvyjyrn"
                   method="POST"
                   className="flex flex-col sm:flex-row items-center gap-2 mt-8"
-                 >
-                  <input 
-                    type="email" name="email" placeholder="votre@email.com" className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white" />
+                >
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="votre@email.com"
+                    className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white"
+                  />
                   <button
-                     className="flex-shrink-0 w-full sm:w-auto px-6 py-2 rounded-md bg-[#FF7A86] text-black font-semibold">Rejoindre la waitlist</button>
+                    type="submit"
+                    className="flex-shrink-0 w-full sm:w-auto px-6 py-2 rounded-md bg-[#FF7A86] text-black font-semibold">
+                    Rejoindre la waitlist
+                  </button>
                 </form>
               </div>
               <div className="flex justify-center">
-                <img src="/support-badge.png" alt="Badge Fondateur" className="h-64 w-64" />
+                <Image src="/support-badge.png" alt="Badge Fondateur" width={256} height={256} className="h-64 w-64" />
               </div>
             </div>
           </div>
@@ -192,16 +198,16 @@ export default function WaitlistPage() {
         {/* Section FAQ */}
         <section className="py-20 max-w-3xl mx-auto">
           <FaqItem question="Est-ce que je dois savoir cuisiner ?">
-            Pas du tout. Cookidea est pensée pour tous les niveaux. Que tu sois débutant ou passionné, tu trouveras des idées faciles à suivre, avec des explications claires et des recettes partagées par d'autres comme toi.
+            Pas du tout. Cookidea est pensée pour tous les niveaux. Que tu sois débutant ou passionné, tu trouveras des idées faciles à suivre, avec des explications claires et des recettes partagées par d&apos;autres comme toi.
           </FaqItem>
           <FaqItem question="Est-ce que l'application est gratuite ?">
-            Oui, les fonctionnalités de base de Cookidea seront toujours gratuites. La campagne de soutien et les offres premium optionnelles nous permettront de maintenir l'application sans publicité.
+            Oui, les fonctionnalités de base de Cookidea seront toujours gratuites. La campagne de soutien et les offres premium optionnelles nous permettront de maintenir l&apos;application sans publicité.
           </FaqItem>
           <FaqItem question="Cookidea fonctionne-t-elle sans connexion internet ?">
             Une connexion est requise pour découvrir de nouvelles recettes et interagir avec la communauté. Cependant, les recettes que vous avez sauvegardées et votre planning seront accessibles hors ligne.
           </FaqItem>
           <FaqItem question="Comment proposer une amélioration ou un retour ?">
-            Nous serons très à l'écoute ! Un lien "Feedback" sera présent dans l'application pour nous envoyer directement vos idées et suggestions.
+            Nous serons très à l&apos;écoute ! Un lien &quot;Feedback&quot; sera présent dans l&apos;application pour nous envoyer directement vos idées et suggestions.
           </FaqItem>
           <FaqItem question="Cookidea est-elle adaptée aux débutants ?">
             Absolument. Chaque recette indiquera un niveau de difficulté, et nous mettrons en avant des recettes simples et rapides pour ceux qui commencent.
@@ -243,12 +249,23 @@ export default function WaitlistPage() {
             </div>
             <div className="space-y-4">
               <p className="font-medium text-white">Soyez avertis lors de la sortie de Cookidea, gagnez un badge pour vous démarquer et 6 mois premium !</p>
-              <form   
-                action="https://formspree.io/f/xxxxxxxx" // <-- VOTRE URL FORMSPREE ICI
+              <form
+                action="https://formspree.io/f/mgvyjyrn"
                 method="POST"
-                className="flex items-center gap-2">
-                <input type="email" name="email" placeholder="votre@email.com" className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white" />
-                <button className="px-4 py-2 rounded-md bg-[#FF7A86] text-black font-semibold">Rejoindre</button>
+                className="flex items-center gap-2"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="votre@email.com"
+                  className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-md bg-[#FF7A86] text-black font-semibold"
+                >
+                  Rejoindre
+                </button>
               </form>
             </div>
           </div>
