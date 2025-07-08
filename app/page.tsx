@@ -35,9 +35,9 @@ export default function WaitlistPage() {
         <section className="flex flex-col items-center text-center py-24 md:py-32 pt-40">
           <div className="relative">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight z-10 relative">
-              <Image src="/group-1.svg" alt="Décoration" width={96} height={96} className="absolute -top-12 -left-25 w-24 hidden md:block" />
+              <Image src="/group-1.svg" alt="Décoration" width={96} height={96} className="absolute -top-12 -left-25 w-24"  />
               Cuisinez mieux, ensemble
-              <Image src="/group-2.svg" alt="Décoration" width={96} height={96} className="absolute -bottom-12 -right-20 w-24 hidden md:block" />
+              <Image src="/group-2.svg" alt="Décoration" width={96} height={96} className="absolute -bottom-12 -right-25 w-24"  />
             </h1>
           </div>
           <p className="max-w-xl mt-6 text-lg text-gray-300">
@@ -49,7 +49,7 @@ export default function WaitlistPage() {
             className="flex flex-col items-center gap-4 mt-8 w-full max-w-md"
           >
             <p className="text-xs text-gray-500 mb-2">
-              Soyez avertis lors de la sortie de Cookidea et gagnez un badge pour vous démarquer.
+              Soyez avertis lors de la sortie de Cookidea et gagnez un badge pour vous démarquer ! 
             </p>
             <div className="flex w-full">
               <input
