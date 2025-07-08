@@ -9,7 +9,7 @@ interface FaqItemProps {
   children: React.ReactNode;
 }
 // Composant pour la FAQ pour éviter la répétition du code
-const FaqItem = ({ question, children }) => (
+const FaqItem = ({ question, children }: FaqItemProps) => (
   <details className="group border-b border-gray-700/50 py-4">
     <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
       {question}
@@ -25,7 +25,7 @@ export default function WaitlistPage() {
     <main className="bg-[#121212] text-white font-sans antialiased">
       {/* En-tête avec le logo */}
       <header className="absolute top-0 left-1/2 -translate-x-1/2 py-6 flex items-center gap-4">
-        <Image src="/vector-4.svg" alt="Décoration" width={24} height={24} className="h-6 w-auto" />
+        <Image src="/vector-4.svg" alt="Décoration" width={24} height={24} className="h-13 w-auto" />
         <Image src="/logo.svg" alt="Cook'Idea Logo" width={132} height={32} className="h-8 w-auto" />
       </header>
 
