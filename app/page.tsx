@@ -1,103 +1,262 @@
-import Image from "next/image";
+// Fichier : app/page.tsx
 
-export default function Home() {
+import { Mail, CheckSquare, ChevronDown } from 'lucide-react';
+
+// Composant pour la FAQ pour éviter la répétition du code
+const FaqItem = ({ question, children }) => (
+  <details className="group border-b border-gray-700/50 py-4">
+    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+      {question}
+      <ChevronDown className="transition-transform duration-300 group-open:rotate-180" />
+    </summary>
+    <p className="mt-4 text-gray-400">{children}</p>
+  </details>
+);
+
+// --- COMPOSANT PRINCIPAL DE LA PAGE ---
+export default function WaitlistPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="bg-[#121212] text-white font-sans antialiased">
+{/* En-tête avec le logo */}
+      <header className="absolute top-0 left-1/2 -translate-x-1/2 py-6 flex items-center gap-4">
+        {/* Image ajoutée à gauche */}
+        <img src="/vector-4.svg" alt="Décoration" className="h-8" /> {/* J'ai mis h-6 pour qu'elle soit un peu plus petite que le logo */}
+        
+        {/* Logo existant */}
+        <img src="/logo.svg" alt="Cook'Idea Logo" className="h-6" />
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="container mx-auto px-4">
+
+        {/* Section Héros */}
+        <section className="flex flex-col items-center text-center py-24 md:py-32 pt-40">
+          <div className="relative">
+            <img src="/group-1.svg" alt="Décoration" className="absolute -top-12 -left-25 w-24 hidden md:block" />
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight z-10 relative">
+              Cuisinez mieux, ensemble
+            <img src="/group-2.svg" alt="Décoration" className="absolute -bottom-1 -right-25 w-24 hidden md:block" />
+            </h1>
+          </div>
+          <p className="max-w-xl mt-6 text-lg text-gray-300">
+            Une application pensée à partir des retours de milliers d’utilisateurs déçus par les applications existantes. Découvrez, partagez et planifiez vos recettes avec une communauté qui place l’entraide avant les publicités et la complexité.
+          </p>
+          <form
+             action="https://formspree.io/f/mgvyjyrn" // <-- VOTRE URL FORMSPREE ICI
+             method="POST"
+             className="flex flex-col items-center gap-4 mt-8 w-full max-w-md"
+            > 
+            <p className="text-xs text-gray-500 mb-2">
+              Soyez avertis lors de la sortie de Cookidea et gagnez un badge pour vous démarquer
+            </p>
+            <div className="flex w-full">
+              <input 
+                type="email"
+                name="email" 
+                placeholder="votre@mail.com" 
+                className="w-full text-center px-6 py-3 rounded-l-full bg-[#1D1C22] text-white placeholder-gray-500 border border-r-0 border-[#3D3A47] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF7A86]" 
+              />
+              <button 
+                className="flex-shrink-0 px-8 py-3 rounded-r-full bg-[#FF7A86] text-black font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300"
+              >
+                Rejoindre
+              </button>
+            </div>
+          </form>
+        </section>
+
+        {/* Section Ce que Cookidea vous offre */}
+        <section className="py-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Ce que Cookidea vous offre</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
+              <img src="/image.png" alt="Icône communauté" className="h-29 w-39 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Communauté active</h3>
+              <p className="text-gray-400">Explorez les idées de cuisine partagées par d’autres utilisateurs, échangez des astuces et publiez vos propres créations.</p>
+            </div>
+            <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
+              <img src="/badges.png" alt="Icône badges" className="h-24 w-24 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Soyez reconnu grâce à vos badges</h3>
+              <p className="text-gray-400">Gagnez des badges en participant et faites savoir à tout le monde que vous êtes un vrai passionné.</p>
+            </div>
+            <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
+              <img src="/fridge.png" alt="Icône frigo" className="h-24 w-24 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Cuisinez ce que vous avez sous la main</h3>
+              <p className="text-gray-400">Pas besoin de réfléchir. Prenez une photo de ce qu’il vous reste, et laissez Cookidea vous suggérer des idées adaptées.</p>
+            </div>
+            <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
+              <img src="/calendar.png" alt="Icône calendrier" className="h-24 w-24 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Planifiez vos repas facilement avec le calendrier intégré</h3>
+              <p className="text-gray-400">Organisez vos plats de la semaine et gagnez du temps grâce à une planification simple et intuitive.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODIFICATION : Alignement à gauche + ajout de vector-4.svg */}
+        <section className="py-20 max-w-3xl mx-auto">
+          <div className="flex items-center gap-4 mb-8">
+            <img src="/vector-4.svg" alt="Décoration" className="h-10" />
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Notre fondement</h2>
+          </div>
+          <div className="text-gray-300 space-y-4">
+            <p>Chez Cookidea, nous concevons une application pensée pour simplifier la cuisine au quotidien.</p>
+            <ul className="list-inside list-disc space-y-2 pl-4">
+              <li>Sans publicités intrusives.</li>
+              <li>Sans interfaces complexes ou inaccessibles.</li>
+            </ul>
+            <p>Pour vraiment placer l'utilisateur au centre, nous nous appuyons sur les retours d'utilisateurs déçus par les grandes applications déjà bien implantées sur le marché.</p>
+            <p>Nous avons écouté ce qui les frustre. Et nous avons décidé de faire les choses autrement. Notre mission : proposer une expérience claire, agréable et réellement utile.</p>
+            <ul className="list-inside list-disc space-y-2 pl-4">
+              <li>Des suggestions basées sur les ingrédients que vous avez déjà.</li>
+              <li>Un calendrier pour planifier facilement vos repas.</li>
+              <li>Une touche de gamification pour progresser en s'amusant.</li>
+            </ul>
+            <p>Et surtout, un véritable réseau social pour partager, s'inspirer, et s'amuser chaque jour autour de la cuisine. Cookidea est conçue pour s'adapter à vos usages – pas l'inverse.</p>
+          </div>
+        </section>
+
+        {/* Section Soutenez le projet (inchangée, reste centrée) */}
+        <section className="py-20 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold">Soutenez le projet et débloquez encore plus d’avantages</h2>
+          <p className="max-w-2xl mx-auto mt-4 text-gray-400">
+            Vous voulez aller plus loin que la waitlist ? En participant à notre campagne Ulule, vous nous aidez à développer une application indépendante, sans pub ni compromis, et vous débloquez des avantages exclusifs réservés aux contributeurs.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
+            <div className="bg-[#1D1C22] p-6 rounded-lg border border-gray-800">
+              <h3 className="font-bold text-lg">Accès anticipé</h3>
+              <p className="text-sm text-gray-400">à certaines fonctionnalités</p>
+            </div>
+            <div className="bg-[#1D1C22] p-6 rounded-lg border border-gray-800">
+              <h3 className="font-bold text-lg">Premium offert</h3>
+              <p className="text-sm text-gray-400">Pendant 6 mois</p>
+            </div>
+            <div className="bg-[#1D1C22] p-6 rounded-lg border border-gray-800">
+              <h3 className="font-bold text-lg">Badge Officiel</h3>
+              <p className="text-sm text-gray-400">Un badge visible sur votre profil</p>
+            </div>
+            <div className="bg-[#1D1C22] p-6 rounded-lg border border-gray-800">
+              <h3 className="font-bold text-lg">Votre nom</h3>
+              <p className="text-sm text-gray-400">Affiché sur notre page de remerciement</p>
+            </div>
+          </div>
+          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-600 transition-all">
+            Nous rejoindre sur Ulule
+          </button>
+        </section>
+
+        {/* MODIFICATION : Alignement à gauche + ajout de vector-4.svg */}
+        <section className="py-20 max-w-3xl mx-auto">
+           <div className="flex items-center gap-4 mb-12">
+            <img src="/vector-4.svg" alt="Décoration" className="h-10" />
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Notre promesse envers vous</h2>
+          </div>
+          <ul className="space-y-4">
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Des recettes inspirantes et variées pour tous les goûts, faciles à trouver et à suivre.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Un planning de repas fluide : organisez votre semaine en quelques clics.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Zéro gâchis : listez vos ingrédients restants, on vous propose des recettes adaptées.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Une vraie communauté : partagez vos trouvailles et découvrez celles des autres.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Vos objectifs avant tout : filtrez les recettes selon votre régime – grossir, perdre du poids, etc.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Motivation au quotidien : suivez vos progrès et célébrez vos bons choix grâce à nos récompenses.</span></li>
+            <li className="flex items-start gap-3"><CheckSquare className="flex-shrink-0 text-green-400 mt-1" /><span>Confort d'utilisation : interface claire, mode sombre pour cuisiner même tard le soir.</span></li>
+          </ul>
+        </section>
+        
+        {/* Section "Rejoignez-nous" */}
+        <section className="py-20">
+          <div className="bg-[#1D1C22] rounded-xl p-8 md:p-12 border border-[#3D3A47]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-bold">Rejoignez-nous</h2>
+                <p className="mt-4 text-gray-300">
+                  Rejoignez la waitlist et recevez le <span className="font-bold text-white">badge Fondateur</span> réservé aux premiers membres de la communauté.
+                  Profitez aussi de <span className="font-bold text-white">6 mois de Premium offerts</span> dès la sortie pour débloquer toutes les fonctionnalités sans limite.
+                  Une manière de vous remercier pour la confiance et de vous donner une vraie place dans le lancement.
+                </p>
+                <form
+                  action="https://formspree.io/f/mgvyjyrn" // <-- VOTRE URL FORMSPREE ICI
+                  method="POST"
+                  className="flex flex-col sm:flex-row items-center gap-2 mt-8"
+                 >
+                  <input 
+                    type="email" name="email" placeholder="votre@email.com" className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white" />
+                  <button
+                     className="flex-shrink-0 w-full sm:w-auto px-6 py-2 rounded-md bg-[#FF7A86] text-black font-semibold">Rejoindre la waitlist</button>
+                </form>
+              </div>
+              <div className="flex justify-center">
+                <img src="/support-badge.png" alt="Badge Fondateur" className="h-64 w-64" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section FAQ */}
+        <section className="py-20 max-w-3xl mx-auto">
+          <FaqItem question="Est-ce que je dois savoir cuisiner ?">
+            Pas du tout. Cookidea est pensée pour tous les niveaux. Que tu sois débutant ou passionné, tu trouveras des idées faciles à suivre, avec des explications claires et des recettes partagées par d'autres comme toi.
+          </FaqItem>
+          <FaqItem question="Est-ce que l'application est gratuite ?">
+            Oui, les fonctionnalités de base de Cookidea seront toujours gratuites. La campagne de soutien et les offres premium optionnelles nous permettront de maintenir l'application sans publicité.
+          </FaqItem>
+          <FaqItem question="Cookidea fonctionne-t-elle sans connexion internet ?">
+            Une connexion est requise pour découvrir de nouvelles recettes et interagir avec la communauté. Cependant, les recettes que vous avez sauvegardées et votre planning seront accessibles hors ligne.
+          </FaqItem>
+          <FaqItem question="Comment proposer une amélioration ou un retour ?">
+            Nous serons très à l'écoute ! Un lien "Feedback" sera présent dans l'application pour nous envoyer directement vos idées et suggestions.
+          </FaqItem>
+          <FaqItem question="Cookidea est-elle adaptée aux débutants ?">
+            Absolument. Chaque recette indiquera un niveau de difficulté, et nous mettrons en avant des recettes simples et rapides pour ceux qui commencent.
+          </FaqItem>
+           <FaqItem question="Les ingrédients sont-ils affichés avec les quantités ?">
+            Oui, chaque recette détaille la liste complète des ingrédients avec les quantités précises pour vous faciliter la préparation et les courses.
+          </FaqItem>
+        </section>
+        
+      </div>
+
+      {/* Footer final */}
+      <footer className="bg-[#1D1C22] text-gray-400">
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="space-y-4">
+              <h3 className="font-bold text-white">Title</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="font-bold text-white">Title</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="font-bold text-white">Title</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+                <li><a href="#" className="hover:text-white">Text clickable</a></li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <p className="font-medium text-white">Soyez avertis lors de la sortie de Cookidea, gagnez un badge pour vous démarquer et 6 mois premium !</p>
+              <form   
+                action="https://formspree.io/f/xxxxxxxx" // <-- VOTRE URL FORMSPREE ICI
+                method="POST"
+                className="flex items-center gap-2">
+                <input type="email" name="email" placeholder="votre@email.com" className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white" />
+                <button className="px-4 py-2 rounded-md bg-[#FF7A86] text-black font-semibold">Rejoindre</button>
+              </form>
+            </div>
+          </div>
+          <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm">
+            <p>&copy; {new Date().getFullYear()} Cookidea. Tous droits réservés.</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
       </footer>
-    </div>
+    </main>
   );
 }
