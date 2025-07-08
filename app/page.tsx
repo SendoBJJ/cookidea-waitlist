@@ -3,6 +3,11 @@
 import { CheckSquare, ChevronDown } from 'lucide-react';
 import Image from 'next/image'; // Importation du composant optimisé pour les images
 
+// On définit les types pour les props du composant
+interface FaqItemProps {
+  question: string;
+  children: React.ReactNode;
+}
 // Composant pour la FAQ pour éviter la répétition du code
 const FaqItem = ({ question, children }) => (
   <details className="group border-b border-gray-700/50 py-4">
