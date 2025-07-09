@@ -71,7 +71,7 @@ export default function WaitlistPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Ce que Cookidea vous offre</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="bg-[#1D1C22] rounded-xl p-6 text-center flex flex-col items-center border border-[#3D3A47] min-h-[300px] justify-center">
-              <Image src="/image.png" alt="Icône communauté" width={116} height={116} className="h-29 w-39 mb-4" />
+              <Image src="/image.png" alt="Icône communauté" width={116} height={116} className="h-35 w-45 mb-4" />
               <h3 className="text-xl font-bold mb-2">Communauté active</h3>
               <p className="text-gray-400">Explorez les idées de cuisine partagées par d&apos;autres utilisateurs, échangez des astuces et publiez vos propres créations.</p>
             </div>
