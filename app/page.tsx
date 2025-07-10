@@ -49,19 +49,19 @@ export default function WaitlistPage() {
             <p className="text-xs text-gray-500 mb-2">
               Soyez avertis lors de la sortie de Cookidea et gagnez un badge pour vous démarquer ! 
             </p>
-            <div className="flex w-full">
-              <input
-                type="email"
-                name="email"
-                placeholder="votre@mail.com"
-                className="w-full text-center px-6 py-3 rounded-l-full bg-[#1D1C22] text-white placeholder-gray-500 border border-r-0 border-[#3D3A47] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF7A86]"
-              />
-              <button
-                type="submit"
-                className="flex-shrink-0 px-8 py-3 rounded-r-full bg-[#FF7A86] text-black font-semibold shadow-lg hover:bg-opacity-90 transition-all duration-300"
-              >
-                Rejoindre
-              </button>
+            <div className="flex w-full gap-3">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="votre@email.com"
+                  className="w-full px-4 py-2 rounded-md bg-[#121212] border border-gray-700 text-white"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-md bg-[#FF7A86] text-black font-semibold"
+                >
+                  Rejoindre
+                </button>
             </div>
           </form>
         </section>
